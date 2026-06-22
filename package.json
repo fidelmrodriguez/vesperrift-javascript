@@ -1,0 +1,21 @@
+{
+  "name": "vesperrift-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "pixi.js": "^8.9.2",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "vite": "6.4.2",
+    "vitest": "4.1.8"
+  }
+}
