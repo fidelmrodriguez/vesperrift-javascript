@@ -18,6 +18,7 @@ export class CombatSystem {
       }
     }
 
+    player.visualAimAngle = Math.atan2(aimDirection.y, aimDirection.x);
     const spread = player.projectileCount === 1 ? 0 : 0.12;
     const startIndex = -(player.projectileCount - 1) / 2;
 
@@ -53,7 +54,6 @@ export class CombatSystem {
       explosionRadius: 0,
       life: 2.6
     });
-    projectile.display.clear().circle(0, 0, 7).fill(0xfacc15).stroke({ width: 2, color: 0xfef3c7, alpha: 0.9 });
     projectile.display.position.set(x, y);
     layer.addChild(projectile.display);
   }

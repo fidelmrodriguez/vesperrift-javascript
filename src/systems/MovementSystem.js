@@ -26,6 +26,7 @@ export class MovementSystem {
     player.aimAngle = Math.atan2(aimDirection.y, aimDirection.x);
     player.display.position.set(player.x, player.y);
     player.aim.rotation = player.aimAngle;
+    if (input.pointer.active) player.visualAimAngle = player.aimAngle;
     player.body.alpha = player.invulnerableTimer > 0 ? 0.52 : 1;
   }
 

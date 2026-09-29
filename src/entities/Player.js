@@ -1,22 +1,16 @@
 import { Container, Graphics } from 'pixi.js';
+import { drawShip } from '../visuals/shipArt.js';
 import { PLAYER_DEFAULTS, WORLD } from '../core/constants.js';
 import { createCollider, createHealth, createKinematics, createTransform } from '../components/entityComponents.js';
 
 export function createPlayer() {
   const container = new Container();
-  const body = new Graphics()
-    .circle(0, 0, PLAYER_DEFAULTS.radius)
-    .fill(0x7dd3fc)
-    .stroke({ width: 3, color: 0xe0f2fe, alpha: 0.85 });
-  const aim = new Graphics()
-    .moveTo(0, 0)
-    .lineTo(36, 0)
-    .stroke({ width: 5, color: 0xffffff, alpha: 0.75 });
-  const core = new Graphics()
-    .circle(0, 0, 8)
-    .fill(0x0f172a);
-
-  container.addChild(body, aim, core);
+  const body = new Graphics();
+  const engine = new Graphics();
+  const aim = new Container();
+  drawShip(body, engine, 'player', PLAYER_DEFAULTS.radius);
+  aim.addChild(engine, body);
+  container.addChild(aim);
   container.zIndex = 20;
 
   return {
@@ -43,9 +37,11 @@ export function createPlayer() {
     xpToLevel: 80,
     level: 1,
     score: 0,
+    visualAimAngle: 0,
     aimAngle: 0,
     display: container,
     body,
+    engine,
     aim
   };
 }
@@ -77,6 +73,7 @@ export function resetPlayer(player) {
     xpToLevel: 80,
     level: 1,
     score: 0,
+    visualAimAngle: 0,
     aimAngle: 0
   });
   player.display.alpha = 1;

@@ -206,6 +206,7 @@ export class ArenaScene {
     this.upgrades.update(dt, this.player, this.paused);
     this.camera.follow(this.player, dt);
     this.renderSystem.updateCamera(this.camera);
+    this.renderSystem.updateVisuals(this.player, this.enemies, this.pickups, this.elapsed);
     this.updateHud();
   }
 
@@ -298,7 +299,6 @@ export class ArenaScene {
     projectile.display.visible = false;
     projectile.display.removeFromParent();
     projectile.owner = 'player';
-    projectile.display.clear().circle(0, 0, 6).fill(0xe0f2fe).stroke({ width: 2, color: 0x38bdf8, alpha: 0.9 });
     pool.release(projectile);
   }
 

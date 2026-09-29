@@ -98,7 +98,7 @@ function showStartOverlay() {
 
 function startThreeLoop() {
   const animate = (time) => {
-    threeBackground.update(time);
+    threeBackground.update(time, arena.player, !arena.paused && !arena.gameOver);
     requestAnimationFrame(animate);
   };
   requestAnimationFrame(animate);

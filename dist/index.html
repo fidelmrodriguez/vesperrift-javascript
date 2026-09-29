@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vesper Rift é um roguelike de ação 2D em PixiJS com arena, upgrades, inimigos, partículas, áudio e UI responsiva." />
+    <link rel="icon" href="/favicon.svg" />
+    <title>Vesper Rift</title>
+    <script type="module" crossorigin src="/assets/index-DteBO3Mk.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/pixi-twVFwn6S.js">
+    <link rel="modulepreload" crossorigin href="/assets/three-bmTnOuO_.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CVYeLLMn.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar" data-topbar>
+        <div class="brand" aria-label="Vesper Rift">
+          <span class="brand__mark">VR</span>
+          <span>
+            <strong>Vesper Rift</strong>
+            <small>Roguelike 2D</small>
+          </span>
+        </div>
+      </header>
+
+      <main>
+        <section class="game-section" id="jogo" data-game-section>
+          <div class="game-shell">
+            <div class="hud" data-hud>
+              <div class="hud-card hud-card--wide">
+                <span>Vida</span>
+                <strong data-hud-hp>100 / 100</strong>
+                <div class="bar"><span data-hud-hp-bar style="width: 100%"></span></div>
+              </div>
+              <div class="hud-card hud-card--wide">
+                <span>XP</span>
+                <strong data-hud-xp>0 / 80</strong>
+                <div class="bar bar--xp"><span data-hud-xp-bar style="width: 0%"></span></div>
+              </div>
+              <div class="hud-card"><span>Tempo</span><strong data-hud-time>00:00</strong></div>
+              <div class="hud-card"><span>Onda</span><strong data-hud-wave>1</strong></div>
+              <div class="hud-card"><span>Inimigos</span><strong data-hud-enemies>0</strong></div>
+              <div class="hud-card"><span>Abates</span><strong data-hud-score>0</strong></div>
+            </div>
+
+            <div class="arena-frame">
+              <div class="three-layer" data-three-background></div>
+              <div class="pixi-layer" data-game-canvas></div>
+
+              <div class="overlay overlay--center" data-start-overlay>
+                <div class="overlay-card overlay-card--controls">
+                  <p class="eyebrow">Controles</p>
+                  <h1>Jogável em desktop e mobile.</h1>
+                  <div class="controls-grid" aria-label="Lista de controles">
+                    <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>movimentar</span></div>
+                    <div><kbd>Mouse</kbd><span>mirar</span></div>
+                    <div><kbd>Espaço</kbd><span>dash</span></div>
+                    <div><kbd>Esc</kbd><span>pausar</span></div>
+                  </div>
+                  <button class="button button--primary" type="button" data-start-game>Começar</button>
+                </div>
+              </div>
+
+              <div class="overlay overlay--center" data-pause-overlay hidden>
+                <div class="overlay-card">
+                  <p class="eyebrow">Pausa</p>
+                  <h2>Partida pausada</h2>
+                  <p>Use este painel para continuar ou reiniciar a run sem modais nativos do navegador.</p>
+                  <div class="overlay-actions">
+                    <button class="button button--primary" type="button" data-resume-button>Continuar</button>
+                    <button class="button" type="button" data-restart-button>Reiniciar</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="overlay overlay--center" data-upgrade-overlay hidden>
+                <div class="overlay-card overlay-card--large">
+                  <p class="eyebrow">Upgrade</p>
+                  <h2>Escolha uma melhoria</h2>
+                  <p>O jogo fica pausado enquanto você decide a próxima evolução do personagem.</p>
+                  <div class="upgrade-grid" data-upgrade-options></div>
+                </div>
+              </div>
+
+              <div class="overlay overlay--center" data-game-over-overlay hidden>
+                <div class="overlay-card">
+                  <p class="eyebrow">Fim da run</p>
+                  <h2>Você caiu na arena</h2>
+                  <p data-game-over-summary>Tempo sobrevivido: 00:00 · Abates: 0</p>
+                  <div class="overlay-actions">
+                    <button class="button button--primary" type="button" data-game-over-restart>Jogar novamente</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mobile-controls" data-mobile-controls aria-label="Controles touch">
+                <div class="mobile-controls__pad">
+                  <button type="button" data-touch-key="KeyW" aria-label="Mover para cima">↑</button>
+                  <button type="button" data-touch-key="KeyA" aria-label="Mover para esquerda">←</button>
+                  <button type="button" data-touch-key="KeyS" aria-label="Mover para baixo">↓</button>
+                  <button type="button" data-touch-key="KeyD" aria-label="Mover para direita">→</button>
+                </div>
+                <button class="mobile-controls__dash" type="button" data-touch-dash>Dash</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="toast-region" data-toast-region aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+  </body>
+</html>

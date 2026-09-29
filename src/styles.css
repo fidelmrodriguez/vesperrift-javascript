@@ -229,7 +229,8 @@ main {
 }
 
 .three-layer {
-  opacity: 0.42;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .pixi-layer {
@@ -922,4 +923,22 @@ p {
     width: 88px;
     height: 88px;
   }
+}
+
+/* Flight-deck finish: restrained metallic panels and luminous instrument edges. */
+.game-shell {
+  background: linear-gradient(145deg, rgba(26, 40, 62, 0.88), rgba(5, 12, 25, 0.95));
+  box-shadow: 0 24px 80px #0008, inset 0 1px 0 #bceaff12;
+}
+.hud-card {
+  background: linear-gradient(150deg, #1a2b40cc, #0a1323ee);
+  border-top-color: #9ac9ed30;
+  box-shadow: inset 0 1px 0 #d4f1ff08;
+}
+.hud-card strong { font-variant-numeric: tabular-nums; }
+.bar--xp span { box-shadow: 0 0 12px #5ce7ff77; }
+.arena-frame { box-shadow: inset 0 0 40px #010511, 0 0 25px #67d9ff08; }
+.overlay-card { background: linear-gradient(145deg, #17283aee, #080e1bf5); border-top-color: #8dcee74a; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

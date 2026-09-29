@@ -21,7 +21,13 @@ export function createParticle() {
 export function resetParticle(particle, payload) {
   Object.assign(particle, payload);
   particle.maxLife = payload.life;
-  particle.display.clear().circle(0, 0, payload.radius ?? 3).fill(payload.color ?? 0x7dd3fc);
+  const radius = payload.radius ?? 3;
+  const color = payload.color ?? 0x7dd3fc;
+  particle.display.clear()
+    .ellipse(0, 0, radius * 2, radius).fill({ color, alpha: 0.14 })
+    .poly([-radius * 2, 0, 0, -radius * 0.45, radius, 0, 0, radius * 0.45]).fill(color)
+    .circle(0, 0, radius * 0.3).fill(0xf1faff);
+  particle.display.rotation = Math.atan2(payload.vy, payload.vx);
   particle.display.visible = true;
   particle.display.alpha = 1;
 }

@@ -1,12 +1,7 @@
 import { Container, Graphics } from 'pixi.js';
+import { drawShip } from '../visuals/shipArt.js';
 import { ENEMY_TYPES } from '../data/enemies.js';
 import { createCollider, createHealth, createKinematics, createTransform } from '../components/entityComponents.js';
-
-const COLORS = {
-  melee: 0xfb7185,
-  ranged: 0xfacc15,
-  charger: 0xc084fc
-};
 
 export function createEnemy(type, x, y, wave = 1) {
   const config = ENEMY_TYPES[type];
@@ -61,22 +56,5 @@ export function recycleEnemy(enemy, type, x, y, wave = 1) {
 }
 
 function drawEnemy(body, ring, type, radius) {
-  body.clear();
-  ring.clear();
-  ring.circle(0, 0, radius + 5).stroke({ width: 2, color: COLORS[type], alpha: 0.28 });
-
-  if (type === 'charger') {
-    body.moveTo(radius, 0).lineTo(-radius * 0.75, radius * 0.72).lineTo(-radius * 0.52, 0).lineTo(-radius * 0.75, -radius * 0.72).closePath().fill(COLORS[type]);
-    body.stroke({ width: 2, color: 0xffffff, alpha: 0.5 });
-    return;
-  }
-
-  if (type === 'ranged') {
-    body.rect(-radius, -radius, radius * 2, radius * 2).fill(COLORS[type]);
-    body.stroke({ width: 2, color: 0xffffff, alpha: 0.45 });
-    return;
-  }
-
-  body.circle(0, 0, radius).fill(COLORS[type]);
-  body.stroke({ width: 2, color: 0xffffff, alpha: 0.45 });
+  drawShip(body, ring, type, radius);
 }
